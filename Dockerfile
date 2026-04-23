@@ -2,8 +2,7 @@ FROM maven:3.9-eclipse-temurin-17 AS builder
 
 WORKDIR /build
 
-# 只复制 backend
-COPY backend/ .
+COPY . .   # ✅ 直接复制当前项目
 
 RUN mvn clean package -DskipTests
 
