@@ -1,12 +1,12 @@
-# 第一步：构建 jar
 FROM maven:3.9-eclipse-temurin-17 AS builder
 
 WORKDIR /build
-COPY . .
+
+# 只复制 backend
+COPY backend/ .
 
 RUN mvn clean package -DskipTests
 
-# 第二步：运行 jar
 FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
